@@ -20,7 +20,6 @@ export function MidSection() {
         setDots(prev => [...array])
 
         let landingTextArr = "Welcome to the future".split("")
-        console.log(landingTextArr)
         setLandingText(prev => landingTextArr)
 
 
@@ -29,7 +28,6 @@ export function MidSection() {
         }
     }, [])
 
-    console.log(dots)
 
     return (
         <div className="relative overflow-y-scroll h-[100vh] scroll-smooth">

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { Pagination } from "./Pagination"
 import { Display } from "./Display"
-import { add, remove, addFilter } from "../redux/dataSlice.js"
+import { add, remove, addFilter, applyFilter } from "../redux/dataSlice.js"
 import { useDispatch, useSelector } from 'react-redux'
 import { Footer } from "./Footer"
 
 export function SearchRocket() {
 
     const dispatch = useDispatch()
+    let tempFilters = useSelector((state) => state.mainData.filters)
 
     useEffect(() => {
         // fetch data here 
@@ -23,7 +24,11 @@ export function SearchRocket() {
 
     function filterData(filterObj) {
         dispatch(addFilter(filterObj))
+        dispatch(applyFilter())
     }
+
+    console.log(tempFilters, " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
     return (
         <div className="text-white pt-[40px]">
             <div className="">
@@ -65,8 +70,8 @@ export function SearchRocket() {
                             })
                         }}>
                             <option value="none">none</option>
-                            <option value="active">Functional</option>
-                            <option value="inactive">Discountinued</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
                         </select>
                     </div>
                 </div>
