@@ -12,7 +12,7 @@ export function Display() {
                             <h1 className="text-2xl hover:tracking-widest text-yellow-400 hover:text-sky-400 transition-all mb-[10px]"> {e.rocket_name}</h1>
                             <h3 className="mb-[10px]">{e.first_flight}</h3>
                             <p className="text-center text-sm"> Engine : {e.engines.type}</p>
-                            <img alt="" src={e.flickr_images[0]} className="w-[400px] rounded-sm hover:animate-pulse mb-[10px] " />
+                            <img alt={e.rocket_name} src={e.flickr_images[0]} className="w-[400px] rounded-sm hover:animate-pulse mb-[10px] " />
                         </div>
                     )
                 })

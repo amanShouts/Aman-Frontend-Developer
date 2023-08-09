@@ -3,6 +3,8 @@ import { Pagination } from "./Pagination"
 import { Display } from "./Display"
 import { add, remove, addFilter } from "../redux/dataSlice.js"
 import { useDispatch, useSelector } from 'react-redux'
+import { Footer } from "./Footer"
+
 export function SearchRocket() {
 
     const dispatch = useDispatch()
@@ -71,6 +73,8 @@ export function SearchRocket() {
                 <Display />
                 <Pagination />
             </div >
+
+            <Footer />
         </div >
     )
 }
