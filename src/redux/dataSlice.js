@@ -29,12 +29,13 @@ export const dataSlice = createSlice({
             const { engine, status, first_flight } = payload
             // console.log(payload, " inside reducerrrrrrrr", engine, status, first_flight)
             if (engine)
-                state.filters = { ...state.filters, engine }
+                state.filters.engine = engine
             if (status)
                 state.filters.status = status
             if (first_flight)
                 state.filters.first_flight = first_flight
             console.log(state)
+
         },
 
     },
