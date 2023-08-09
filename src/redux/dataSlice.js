@@ -36,6 +36,7 @@ export const dataSlice = createSlice({
                 state.filters.first_flight = first_flight
             console.log(state)
 
+            let filteredData = filterData(engine)
         },
 
     },
