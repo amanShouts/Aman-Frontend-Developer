@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Pagination } from "./Pagination"
 import { Display } from "./Display"
-import { add, remove } from "../redux/dataSlice.js"
-import { useDispatch } from 'react-redux'
+import { add, remove, addFilter } from "../redux/dataSlice.js"
+import { useDispatch, useSelector } from 'react-redux'
 export function SearchRocket() {
 
     const dispatch = useDispatch()
@@ -19,6 +19,9 @@ export function SearchRocket() {
 
     }, [])
 
+    function filterData(filterObj) {
+        dispatch(addFilter(filterObj))
+    }
     return (
         <div className="text-white pt-[40px]">
             <div className="">
@@ -28,16 +31,25 @@ export function SearchRocket() {
                 <div className="mt-[70px] flex justify-evenly items-center">
                     <div className="flex justify-between items-center w-[15vw]">
                         <label className="border-b-2 pb-1"> Engine Type :</label>
-                        <select name="engine" id="cars" className="text-black rounded-md h-[35px] w-[120px]">
-                            <option value="volvo">None</option>
-                            <option value="saab">Raptor</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select name="engine" id="cars" className="text-black rounded-md h-[35px] w-[120px]"
+                            onChange={(e) => {
+                                filterData({
+                                    engine: e.target.value,
+                                })
+                            }}>
+                            <option value="none">None</option>
+                            <option value="raptor">Raptor</option>
+                            <option value="merlin">Merlin</option>
                         </select>
                     </div>
                     <div className="flex justify-between items-center w-[15vw]">
                         <label className="border-b-2 pb-1">First Flight :</label>
-                        <select name="first_flight" className="text-black rounded-md h-[35px] w-[120px]">
+                        <select name="first_flight" className="text-black rounded-md h-[35px] w-[120px]" onChange={(e) => {
+                            filterData({
+                                first_flight: e.target.value,
+
+                            })
+                        }}>
                             <option value="none">none</option>
                             <option value="asc">Asc</option>
                             <option value="desc">Desc</option>
@@ -45,10 +57,14 @@ export function SearchRocket() {
                     </div>
                     <div className="flex justify-between items-center w-[15vw]">
                         <label className="border-b-2 pb-1">Status :</label>
-                        <select name="status" className="text-black rounded-md h-[35px] w-[120px]">
+                        <select name="status" className="text-black rounded-md h-[35px] w-[120px]" onChange={(e) => {
+                            filterData({
+                                status: e.target.value
+                            })
+                        }}>
                             <option value="none">none</option>
                             <option value="active">Functional</option>
-                            <option value="inactive">Discountinued </option>
+                            <option value="inactive">Discountinued</option>
                         </select>
                     </div>
                 </div>

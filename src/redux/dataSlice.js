@@ -2,6 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     arr: [],
+    filterArr: [],
+    filters: {
+        engine: "",
+        status: "",
+        first_flight: ""
+    }
 }
 
 export const dataSlice = createSlice({
@@ -18,11 +24,23 @@ export const dataSlice = createSlice({
         remove: (state) => {
             state.arr = []
         },
+        addFilter: (state, { payload }) => {
+            // add filter will apply given filters 
+            const { engine, status, first_flight } = payload
+            // console.log(payload, " inside reducerrrrrrrr", engine, status, first_flight)
+            if (engine)
+                state.filters = { ...state.filters, engine }
+            if (status)
+                state.filters.status = status
+            if (first_flight)
+                state.filters.first_flight = first_flight
+            console.log(state)
+        },
 
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { add, remove } = dataSlice.actions
+export const { add, remove, addFilter } = dataSlice.actions
 
 export default dataSlice.reducer
