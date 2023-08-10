@@ -92,7 +92,7 @@ export const dataSlice = createSlice({
                 }
             }
 
-            state.filterArr = [...tempFilterData]
+            state.filterArr = tempFilterData
 
         }
 
