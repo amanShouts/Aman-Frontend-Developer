@@ -23,17 +23,16 @@ const style = {
 export function TransitionsModal({ shouldOpen, modalData, setShouldOpen }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => { setOpen(false); setShouldOpen(prev => false) }
 
     useEffect(() => {
-
-
         if (shouldOpen)
             handleOpen()
         else
             handleClose()
     }, [])
-    console.log(modalData, "modal data")
+
+
     return (
         <div>
             {/* <Button onClick={handleOpen}>Open modal</Button> */}

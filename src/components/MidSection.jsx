@@ -64,7 +64,7 @@ export function MidSection() {
 
             </div>
 
-            <div className="h-[150vh] bg-gray-900 relative z-10 ">
+            <div className="h-fit bg-gray-900 relative z-10 ">
                 <SearchRocket />
 
             </div>
