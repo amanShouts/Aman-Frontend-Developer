@@ -73,21 +73,18 @@ export const dataSlice = createSlice({
 
             if (state.filters.first_flight != "none") {
                 if (state.filters.first_flight == "asc") {
-                    console.log("asc")
                     tempFilterData = tempFilterData.slice().sort((a, b) => {
                         a = a.first_flight.split("-").join("")
                         b = b.first_flight.split("-").join("")
-                        // console.log(a, b)
-                        Number(a) - Number(b)
+
+                        return Number(a) - Number(b)
                     })
                 }
                 if (state.filters.first_flight == "desc") {
-                    console.log("desc")
                     tempFilterData = tempFilterData.slice().sort((a, b) => {
                         a = a.first_flight.split("-").join("")
                         b = b.first_flight.split("-").join("")
-                        // console.log(a, b)
-                        Number(b) - Number(a)
+                        return Number(b) - Number(a)
                     })
                 }
             }
