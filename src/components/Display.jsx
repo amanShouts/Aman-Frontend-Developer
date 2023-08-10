@@ -9,7 +9,6 @@ export function Display() {
     const [shouldOpen, setShouldOpen] = useState(false)
 
     let filteredData = useSelector((store) => store.mainData.filterArr)
-    console.log(filteredData, " -----------")
 
     function openModal(element) {
         setShouldOpen(prev => true)
