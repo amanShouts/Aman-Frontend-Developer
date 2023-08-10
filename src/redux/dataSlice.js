@@ -54,10 +54,8 @@ export const dataSlice = createSlice({
             //means atleast 1 filters is non none 
 
             let tempFilterData = state.arr // main arry 
-            let f1 = false, f2 = false;
 
             if (state.filters.engine != "none") {
-                f1 = true
                 tempFilterData = tempFilterData.filter((elem) => {
                     if (state.filters.engine === elem.engines.type)
                         return true
@@ -67,7 +65,6 @@ export const dataSlice = createSlice({
 
             if (state.filters.status != "none") {
                 tempFilterData = tempFilterData.filter((elem) => {
-                    f2 = true
                     if ((state.filters.status == "active" ? true : false) === elem.active)
                         return true
                     return false
@@ -76,18 +73,26 @@ export const dataSlice = createSlice({
 
             if (state.filters.first_flight != "none") {
                 if (state.filters.first_flight == "asc") {
-                    tempFilterData.sort((a, b) => {
-                        a.first_flight - b.first_flight
+                    console.log("asc")
+                    tempFilterData = tempFilterData.slice().sort((a, b) => {
+                        a = a.first_flight.split("-").join("")
+                        b = b.first_flight.split("-").join("")
+                        // console.log(a, b)
+                        Number(a) - Number(b)
                     })
                 }
                 if (state.filters.first_flight == "desc") {
-                    tempFilterData.sort((a, b) => {
-                        b.first_flight - a.first_flight
+                    console.log("desc")
+                    tempFilterData = tempFilterData.slice().sort((a, b) => {
+                        a = a.first_flight.split("-").join("")
+                        b = b.first_flight.split("-").join("")
+                        // console.log(a, b)
+                        Number(b) - Number(a)
                     })
                 }
             }
 
-            state.filterArr = tempFilterData
+            state.filterArr = [...tempFilterData]
 
         }
 
